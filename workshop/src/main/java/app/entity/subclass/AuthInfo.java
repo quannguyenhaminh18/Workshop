@@ -2,6 +2,7 @@ package app.entity.subclass;
 
 
 import app.entity.superclass.BaseEntity;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
@@ -25,6 +26,6 @@ public class AuthInfo extends BaseEntity {
 
     private LocalDateTime lastLogin;
 
-    @OneToOne(mappedBy = "authInfo")
+    @OneToOne(mappedBy = "authInfo", cascade = CascadeType.ALL, orphanRemoval = true)
     private User user;
 }

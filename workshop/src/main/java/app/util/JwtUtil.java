@@ -18,9 +18,9 @@ public class JwtUtil {
     private static String secretKey;
 
     @Value("${jwt.expiration}")
-    private long jwtExpirationMs;
+    private static long jwtExpirationMs;
 
-    public String generateToken(AuthInfo authInfo) {
+    public static String generateToken(AuthInfo authInfo) {
         return Jwts.builder()
                 .setSubject(authInfo.getUsername())
                 .claim(AUTHORITY_CLAIM, authInfo.getUser() == null ? USER_AUTHORITY : ADMIN_AUTHORITY)
