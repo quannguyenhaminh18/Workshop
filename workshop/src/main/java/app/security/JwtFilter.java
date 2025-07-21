@@ -26,8 +26,6 @@ import static app.util.JwtUtil.AUTHORITY_CLAIM;
 @Component
 @RequiredArgsConstructor
 public class JwtFilter extends OncePerRequestFilter {
-    private final JwtUtil jwtUtil;
-
     @Override
     protected void doFilterInternal(HttpServletRequest request,
                                     @NonNull HttpServletResponse response,
@@ -44,10 +42,10 @@ public class JwtFilter extends OncePerRequestFilter {
         String token = authHeader.substring(7);
 
         try {
-            Claims claims = jwtUtil.extractToken(token);
+            Claims claims = JwtUtil.extractToken(token);
             String username = claims.getSubject();
 
-            if (username == null || !jwtUtil.isTokenValid(token, username)) {
+            if (username == null || !JwtUtil.isTokenValid(token, username)) {
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                 return;
             }
