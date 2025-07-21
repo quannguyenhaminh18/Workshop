@@ -1,5 +1,6 @@
 package app.entity.subclass;
 
+
 import app.entity.superclass.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
